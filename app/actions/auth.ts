@@ -151,3 +151,15 @@ export const signup = async (formData: FormData): Promise<ActionResponse> => {
     }
   }
 } 
+
+
+export const signout = async () => {
+  try {
+    await deleteSession();
+  } catch (error) {
+    console.error(error);
+    throw error;
+  } finally {
+    redirect('/signin');
+  }
+}
